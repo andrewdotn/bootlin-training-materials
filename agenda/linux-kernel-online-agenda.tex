@@ -204,6 +204,30 @@
 \section{Half day 3}
 
 \feagendatwocolumn
+{Lecture - The device tree language}
+{
+  \begin{itemize}
+  \item Needs for description languages
+  \item Syntax (nodes, subnodes, phandles/specifiers)
+  \item Top nodes (cpu, memory, led, hos, etc)
+  \item Generic properties
+    (compatible, reg, irq, clk, dma, reset, gpio, power, power-domain, regulator)
+    plus '-names' suffix, '-gpio' suffix
+  \item Includes/overlays
+  \item Bindings
+  \end{itemize}
+}
+{Lecture: Understanding the boot flow}
+{
+  \begin{itemize}
+  \item Arch initialization
+  \item SoC identification/initialization
+  \item Firmware interaction (OPTEE, SMC, SCMI, PSCI)
+  \item Base initializations (clk, irq, memory)
+  \item Driver loading + of_platform_populate_dt() for the devices
+}
+
+\feagendatwocolumn
 {Lecture - Linux device model}
 {
   \begin{itemize}
@@ -211,7 +235,9 @@
     drivers
   \item The device model
   \item Binding devices and drivers
-  \item Platform devices, Device Tree
+  \item Platform devices
+  \item Parsing common properties
+    [into regular C structures (compatible, reg, irq, clk)]
   \item Interface in user space: \code{/sys}
   \end{itemize}
 }
@@ -318,9 +344,28 @@
   \item Modify the Device Tree to instantiate the new serial port
     device.
   \item Reserve the I/O memory addresses used by the serial port.
-  \item Read device registers and write data to them, to send
-    characters on the serial port.
+  \item Try to access device registers.
   \end{itemize}
+}
+
+{Clocking}
+{
+  \begin{itemize}
+  \item Understanding the clock subsystem
+  \item Clocks user API explanation
+  \item Clock parenting
+  \item Power domains
+  \item Runtime PM
+  \end{itemize}
+}
+{Demo - Clock handling and register accesses}
+{
+  {\em Using the BeagleBone Black board}
+  \begin{itemize}
+  \item Enable the clocks (if possible)
+  \item Enable runtime PM
+  \item Access device registers
+  \item Send characters on the serial port.
 }
 
 \feagendatwocolumn
@@ -368,6 +413,36 @@
 }
 
 \feagendatwocolumn
+{Lecture - DMA}
+{
+  \begin{itemize}
+    \item dmaengine abstraction
+    \item DMA buffers
+    \item Driver API
+  \end{itemize}
+}
+{Demo - DMA}
+{
+  \begin{itemize}
+    \item Transmit bytes using DMA
+  \end{itemize}
+}
+
+\feagendatwocolumn
+{Lecture - MMAP}
+{
+  \begin{itemize}
+    \item MMAP
+  \end{itemize}
+}
+{Demo - MMAP}
+{
+  \begin{itemize}
+    \item Expose the ring buffer to userspace
+  \end{itemize}
+}
+
+\feagendatwocolumn
 {Lecture - Locking}
 {
   \begin{itemize}
@@ -393,10 +468,9 @@
 {
   \begin{itemize}
   \item Debugging with printing functions
+  \item Perf
   \item Using Debugfs
   \item Analyzing a kernel oops
-  \item Using kgdb, a kernel debugger
-  \item Using the Magic SysRq commands
   \end{itemize}
 }
 {Demo - Investigating kernel faults}
@@ -409,25 +483,6 @@
   \end{itemize}
 }
 
-\feagendatwocolumn
-{Lecture - ARM board support and SoC support}
-{
-  \begin{itemize}
-  \item Understand the organization of the ARM support code
-  \item Understand how the kernel can be ported to a new hardware
-    board
-  \end{itemize}
-}
-{Lecture - Power management}
-{
-  \begin{itemize}
-  \item Overview of the power management features of the kernel
-  \item Topics covered: clocks, suspend and resume, dynamic frequency
-    scaling, saving power during idle, runtime power management,
-    regulators, etc.
-  \end{itemize}
-}
-
 \feagendaonecolumn
 {Lecture - The Linux kernel development process}
 {
@@ -435,9 +490,6 @@
   \item Organization of the kernel community
   \item The release schedule and process: release candidates, stable
     releases, long-term support, etc.
-  \item Legal aspects, licensing.
-  \item How to submit patches to contribute code to the community.
-  \item Kernel resources: books, websites, conferences
   \end{itemize}
 }
 
@@ -445,8 +497,7 @@
 {Lecture - If time left}
 {
   \begin{itemize}
-  \item DMA
-  \item mmap
+  \item Overview of the power management features of the kernel
   \end{itemize}
 }
 {Questions and Answers}
