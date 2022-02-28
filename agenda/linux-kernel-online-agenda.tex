@@ -40,7 +40,7 @@
   \end{itemize}
 }
 \feagendasummaryitem{Duration}{
-  {\bf Seven } half days - 28 hours (4 hours per half day).
+  {\bf Height } half days - 32 hours (4 hours per half day), including breaks.
 }
 \onlinepedagogics{linux-kernel}
 \feagendasummaryitem{Trainer}{
@@ -201,7 +201,7 @@
   \end{itemize}
 }
 
-\feagendatwocolumn
+\feagendaonecolumn
 {Lecture - The device tree language}
 {
   \begin{itemize}
@@ -218,9 +218,10 @@
 
 \section{Half day 3}
 
-\feagendatwocolumn
+\feagendaonecolumn
 {Demo - Device tree hacking}
 {
+  {\em Using the BeagleBone Black board}
   \begin{itemize}
   \item Manage nodes: disable a controller
   \item Manage properties: give user GPIOs other functions
@@ -235,11 +236,13 @@
   \item Arch initialization
   \item SoC identification/initialization
   \item Base initializations (clk, irq, memory)
-  \item Driver loading + of_platform_populate_dt() for the devices
+  \item Drivers loading
+  \item Device population
   \end{itemize}
 }
 {Demo - Display device tree parsing information}
 {
+  {\em Using the BeagleBone Black board}
   \begin{itemize}
   \item Enable debug callsites to print the device tree parsing at boot time
   \end{itemize}
@@ -301,7 +304,7 @@
   \end{itemize}
 }
 
-\feagendatwocolumn
+\feagendaonecolumn
 {Lecture - Kernel frameworks}
 {
   \begin{itemize}
@@ -368,6 +371,7 @@
   \end{itemize}
 }
 
+\feagendatwocolumn
 {Lecture - Clocking}
 {
   \begin{itemize}
@@ -385,6 +389,7 @@
   \item Access device registers
   \item Calculate prescalers using the clock rate
   \item Send characters on the serial port.
+  \end{itemize}
 }
 
 \section{Half day 6}
@@ -443,8 +448,9 @@
   \item dmaengine abstraction
   \end{itemize}
 }
-{Demo - DMA}
+{Demo - Using DMA}
 {
+  {\em Using the BeagleBone Black board}
   \begin{itemize}
   \item Transmit or receive bytes using DMA
   \end{itemize}
@@ -460,6 +466,7 @@
 }
 {Demo - Side communication channels}
 {
+  {\em Using the BeagleBone Black board}
   \begin{itemize}
   \item Access the internal counter with an ioctl
   \item Expose the ring buffer to userspace with MMAP
@@ -520,13 +527,14 @@
 }
 {Demo - Use runtime PM}
 {
+  {\em Using the BeagleBone Black board}
   \begin{itemize}
   \item Get rid of the manual clock handling
   \item Trace runtime PM calls
   \end{itemize}
 }
 
-\feagendatwocolumn
+\feagendaonecolumn
 {Lecture - Firmware interaction}
 {
   \begin{itemize}
@@ -541,23 +549,14 @@
 {
   \begin{itemize}
   \item Final quiz
-  \item Quiz notation and discussion
+  \item Quiz notation
   \end{itemize}
 }
-
-\feagendatwocolumn
 {Questions and Answers}
 {
   \begin{itemize}
-  \item Questions and answers with the audience about the course topics
-  \item Extra presentations if time is left, according what most
-        participants are interested in.
+  \item Questions and answers with the audience
   \end{itemize}
 }
-
-\section{Possible extra time}
-
-{\em Extra time (up to 4 hours) may be proposed if the agenda didn't fit in 7 half days,
-     according to the time spent answering questions from participants.}
 
 \end{document}
