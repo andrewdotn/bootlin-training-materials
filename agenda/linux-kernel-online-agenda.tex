@@ -139,10 +139,8 @@
   \begin{itemize}
   \item Specifics of Linux kernel development
   \item Coding standards
-  \item Retrieving Linux kernel sources
+  \item Picking the right Linux kernel sources
   \item Tour of the Linux kernel sources
-  \item Kernel source code browsers: cscope,
-        Elixir Cross Referencer, VS Code...
   \end{itemize}
 }
 \\
@@ -155,7 +153,9 @@
     and for other kinds of information.
   \item Using the UNIX command line and then kernel source code
     browsers.
- \end{itemize}
+  \item The release schedule and process: release candidates, stable
+    releases, long-term support, etc.
+  \end{itemize}
 }
 
 \section{Half day 2}
@@ -201,8 +201,6 @@
   \end{itemize}
 }
 
-\section{Half day 3}
-
 \feagendatwocolumn
 {Lecture - The device tree language}
 {
@@ -217,14 +215,34 @@
   \item Bindings
   \end{itemize}
 }
-{Lecture: Understanding the boot flow}
+
+\section{Half day 3}
+
+\feagendatwocolumn
+{Demo - Device tree hacking}
+{
+  \begin{itemize}
+  \item Manage nodes: disable a controller
+  \item Manage properties: give user GPIOs other functions
+  \item Dive into the sysfs representation
+  \end{itemize}
+}
+
+\feagendatwocolumn
+{Lecture - Understanding the boot flow}
 {
   \begin{itemize}
   \item Arch initialization
   \item SoC identification/initialization
-  \item Firmware interaction (OPTEE, SMC, SCMI, PSCI)
   \item Base initializations (clk, irq, memory)
   \item Driver loading + of_platform_populate_dt() for the devices
+  \end{itemize}
+}
+{Demo - Display device tree parsing information}
+{
+  \begin{itemize}
+  \item Enable debug callsites to print the device tree parsing at boot time
+  \end{itemize}
 }
 
 \feagendatwocolumn
@@ -252,6 +270,8 @@
   \end{itemize}
 }
 
+\section{Half day 4}
+
 \feagendaonecolumn
 {Lecture - Introduction to the I2C API}
 {
@@ -262,7 +282,6 @@
   \end{itemize}
 }
 
-\section{Half day 4}
 \feagendatwocolumn
 {Lecture - Pin muxing}
 {
@@ -293,6 +312,10 @@
   \item The principle of kernel frameworks
   \end{itemize}
 }
+
+\section{Half day 5}
+
+\feagendatwocolumn
 {Lecture - The input subsystem}
 {
   \begin{itemize}
@@ -302,8 +325,6 @@
   \item User space API offered by the {\em input} subsystem
   \end{itemize}
 }
-
-\feagendaonecolumn
 {Demo - Expose the Nunchuk functionality to user space}
 {
   {\em Using the BeagleBone Black board}
@@ -314,7 +335,6 @@
   \end{itemize}
 }
 
-\section{Half day 5}
 \feagendaonecolumn
 {Lecture - Memory management}
 {
@@ -348,14 +368,12 @@
   \end{itemize}
 }
 
-{Clocking}
+{Lecture - Clocking}
 {
   \begin{itemize}
   \item Understanding the clock subsystem
   \item Clocks user API explanation
   \item Clock parenting
-  \item Power domains
-  \item Runtime PM
   \end{itemize}
 }
 {Demo - Clock handling and register accesses}
@@ -365,8 +383,11 @@
   \item Enable the clocks (if possible)
   \item Enable runtime PM
   \item Access device registers
+  \item Calculate prescalers using the clock rate
   \item Send characters on the serial port.
 }
+
+\section{Half day 6}
 
 \feagendatwocolumn
 {Lecture - The misc kernel subsystem}
@@ -389,7 +410,6 @@
   \end{itemize}
 }
 
-\section{Half day 6}
 \feagendatwocolumn
 {Lecture - Processes, scheduling, sleeping and interrupts}
 {
@@ -412,33 +432,37 @@
   \end{itemize}
 }
 
+\section{Half day 7}
+
 \feagendatwocolumn
 {Lecture - DMA}
 {
   \begin{itemize}
-    \item dmaengine abstraction
-    \item DMA buffers
-    \item Driver API
+  \item The concept of Direct Memory Accesses
+  \item DMA mappings
+  \item dmaengine abstraction
   \end{itemize}
 }
 {Demo - DMA}
 {
   \begin{itemize}
-    \item Transmit bytes using DMA
+  \item Transmit or receive bytes using DMA
   \end{itemize}
 }
 
 \feagendatwocolumn
-{Lecture - MMAP}
+{Lecture - Alternative ways of interacting with a device}
 {
   \begin{itemize}
-    \item MMAP
+  \item ioctl
+  \item MMAP
   \end{itemize}
 }
-{Demo - MMAP}
+{Demo - Side communication channels}
 {
   \begin{itemize}
-    \item Expose the ring buffer to userspace
+  \item Access the internal counter with an ioctl
+  \item Expose the ring buffer to userspace with MMAP
   \end{itemize}
 }
 
@@ -462,7 +486,7 @@
   \end{itemize}
 }
 
-\section{Half day 7}
+\section{Half day 8}
 \feagendatwocolumn
 {Lecture - Driver debugging techniques}
 {
@@ -470,6 +494,7 @@
   \item Debugging with printing functions
   \item Perf
   \item Using Debugfs
+  \item Using kgdb, a kernel debugger
   \item Analyzing a kernel oops
   \end{itemize}
 }
@@ -477,29 +502,50 @@
 {
   {\em Using the BeagleBone Black board}
   \begin{itemize}
+  \item Configuring kgdb to trigger on a Oops
   \item Studying a broken driver.
   \item Analyzing a kernel fault message and locating the problem in the
     source code.
   \end{itemize}
 }
 
-\feagendaonecolumn
-{Lecture - The Linux kernel development process}
+\feagendatwocolumn
+{Lecture - Saving power}
 {
   \begin{itemize}
-  \item Organization of the kernel community
-  \item The release schedule and process: release candidates, stable
-    releases, long-term support, etc.
+  \item Power domains
+  \item Runtime PM
+  \item cpufreq, cpuidle
+  \end{itemize}
+}
+{Demo - Use runtime PM}
+{
+  \begin{itemize}
+  \item Get rid of the manual clock handling
+  \item Trace runtime PM calls
   \end{itemize}
 }
 
 \feagendatwocolumn
-{Lecture - If time left}
+{Lecture - Firmware interaction}
 {
   \begin{itemize}
-  \item Overview of the power management features of the kernel
+  \item Trusted Execution Environments (OPTEE)
+  \item Secure services (SCMI, PSCI)
+  \item Secure Monitor Calls (SMC)
   \end{itemize}
 }
+
+\feagendatwocolumn
+{If time left}
+{
+  \begin{itemize}
+  \item Final quiz
+  \item Quiz notation and discussion
+  \end{itemize}
+}
+
+\feagendatwocolumn
 {Questions and Answers}
 {
   \begin{itemize}
@@ -515,4 +561,3 @@
      according to the time spent answering questions from participants.}
 
 \end{document}
-
