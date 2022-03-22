@@ -397,8 +397,6 @@
   {\em Using the embedded hardware platform}
 }
 
-\section{Day 5 - Morning}
-
 \feagendaonecolumn
 {Lecture - Open source licenses and compliance}
 {
@@ -410,6 +408,8 @@
   \item Compliance with open-source licenses: best practices
   \end{itemize}
 }
+
+\section{Day 5 - Morning}
 
 \feagendatwocolumn
 {Lecture - Overview of major embedded Linux software stacks}
@@ -429,9 +429,11 @@
 {Lab - Integration of additional software stacks}
 {
   \begin{itemize}
-  \item Integration of {\em udev} for device management
-  \item Integration of {\em D-Bus} for inter-process communication
-  \item Integration of an audio stack
+  \item Integration of {\em systemd} as an init system
+  \item Use {\em udev} built in {\em systemd} for automatic module
+    loading
+  \item Usage of {\em D-Bus} for inter-process communication
+  \item Integration of an audio player.
   \end{itemize}
 
   \vspace{0.5cm}
@@ -459,50 +461,11 @@
   \begin{itemize}
   \item Creating an application that uses an I2C-connected joystick to
     control an audio player.
-  \item Using {\em strace}, {\em ltrace} and {\em gdbserver} to debug
-    a buggy application on the remote system.
-  \end{itemize}
-
-  \vspace{0.5cm}
-  {\em Using the embedded hardware platform}
-}
-
-\section{Extra topics if time left}
-
-The following topics will only be covered if enough time is left in
-the course.
-
-\feagendaonecolumn
-{Lecture - Embedded Linux security}
-{
-  \begin{itemize}
-  \item Main principles of security for embedded Linux systems
-  \item Access control and regular Unix permissions
-  \item Linux Security Modules: SELinux, AppArmor
-  \item Secure boot
-  \item Filesystem encryption
-  \item Security vulnerabilities: CVEs
-  \item Strategy for software updates
-  \end{itemize}
-}
-
-\feagendatwocolumn
-{Lecture - Factory flashing and Over-The-Air updates}
-{
-  \begin{itemize}
-  \item Factory flashing: principle and main techniques
-  \item System update strategies: complete system update, packages,
-    filesystem-level, A/B partioning, rescue system
-  \item Over-The-Air open-source solutions: {\em swupdate}, {\em
-      RAUC}, {\em Mender}, {\em OSTree}
-  \end{itemize}
-}
-{Lab - Factory flashing and Over-The-Air updates}
-{
-  \begin{itemize}
-  \item Preparing a ready-to-use SD card image
-  \item Integrating {\em swupdate} for complete system updates with an
-    A/B partitioning scheme
+  \item Setting up an IDE to develop and remotely debug an
+    application.
+  \item Using {\em strace}, {\em ltrace}, {\em gdbserver} and {\em
+      perf} to debug/investigate buggy applications on the embedded
+    board.
   \end{itemize}
 
   \vspace{0.5cm}
